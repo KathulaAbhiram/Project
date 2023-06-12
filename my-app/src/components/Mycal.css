@@ -1,0 +1,11 @@
+.datepicker-container {
+    display: flex;
+    justify-content: center;
+}
+  
+.mycal-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
