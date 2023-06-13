@@ -104,12 +104,13 @@ function App() {
         <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className='mb-3'>
         <label htmlFor='question' className='form-control fw-bold fs-5'>Question</label>
-        <input id='question' pattern='[a-z]*' {...register('question',{required:true})}  onChange={(e)=>setQuestion(e.target.value)} />
-        {errors.question?.type==="required"&& <p className='text-danger fw-bold fs-5'>*Question is required</p>}
+        <input id='question' {...register('question', { required: true })} onChange={(e) => setQuestion(e.target.value)} />
+
+        
         </div>
         <div className='mb-3'>
         <label htmlFor='answer' className='form-control fw-bold fs-5'>Answer</label>
-        <input id='answer' pattern='[a-z]*' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
+        <input id='answer' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
         </div>
         <div className='mb-3'>
         <label htmlFor='image' className='form-label fw-bold fs-5'>User image</label>

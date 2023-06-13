@@ -32,6 +32,8 @@ After clicking Add Card buttton and entering the details new card should be disp
 ># npm init
 ># npm install bodyparser express mysql
 
+># node index.js
+
 # MySQl
 >Create a table and connect it to index.js in backend folder
 
