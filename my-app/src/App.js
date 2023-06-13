@@ -23,8 +23,7 @@ function App() {
   const [image, setImage] = useState('');
   const [qslist,setQslist]=useState([]);
   const [show, setShow] = useState(false);
-  const {register,handleSubmit}=useForm();
-
+  const {register,handleSubmit,formState:{errors}}=useForm();
 
   //To print data of movie name and reviews in console
   //Fetch data
@@ -105,7 +104,8 @@ function App() {
         <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className='mb-3'>
         <label htmlFor='question' className='form-control fw-bold fs-5'>Question</label>
-        <input id='question' pattern='[a-z]*' {...register('question',{required:true})}  onChange={(e)=>setQuestion(e.target.value)} />        
+        <input id='question' pattern='[a-z]*' {...register('question',{required:true})}  onChange={(e)=>setQuestion(e.target.value)} />
+        {errors.question?.type==="required"&& <p className='text-danger fw-bold fs-5'>*Question is required</p>}
         </div>
         <div className='mb-3'>
         <label htmlFor='answer' className='form-control fw-bold fs-5'>Answer</label>
