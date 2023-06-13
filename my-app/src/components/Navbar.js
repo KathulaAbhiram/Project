@@ -11,7 +11,7 @@ function Navbar() {
   const handleClose=()=>setShowOff(false);
   const handleShow=()=>setShowOff(true);
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-primary">
+    <nav className="navbar navbar-expand-sm navbar-light">
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/">

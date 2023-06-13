@@ -20,13 +20,14 @@ function App() {
 
   const [question,setQuestion]=useState('');
   const [answer,setAnswer]=useState('');
-  const [qslist,setQslist]=useState([]);
   const [image, setImage] = useState('');
+  const [qslist,setQslist]=useState([]);
   const [show, setShow] = useState(false);
   const {register,handleSubmit}=useForm();
 
 
   //To print data of movie name and reviews in console
+  //Fetch data
   useEffect(()=>{
     Axios.get('http://localhost:3001/api/get')
     .then((res)=>setQslist(res.data))
@@ -86,31 +87,33 @@ function App() {
   return (
     <div className='App'>
     <RouterProvider router={router}></RouterProvider>
+
+      {/* Button */}
       <div className="btn-container">
         <button onClick={handleShow} className="btn btn-primary">
           <IoMdAddCircle style={{ marginRight: "5px" }} />Add Card
         </button>
       </div>
-      <Modal show={show} onHide={handleClose}>
 
+      {/*  Modal */}
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className='modal-header'>
           <Modal.Title className='modal-title'>Creating a new card</Modal.Title>
         </Modal.Header>
-
         <Modal.Body className='modal-body'>
         <div className='row modal-content'>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className='mb-3'>
         <label htmlFor='question' className='form-control fw-bold fs-5'>Question</label>
-        <textarea id='question' pattern='[a-z]*' {...register('question',{required:true})}  onChange={(e)=>setQuestion(e.target.value)} style={{ wordWrap: 'break-word', height: '40px',width:'350px'}}></textarea>        
+        <input id='question' pattern='[a-z]*' {...register('question',{required:true})}  onChange={(e)=>setQuestion(e.target.value)} />        
         </div>
         <div className='mb-3'>
         <label htmlFor='answer' className='form-control fw-bold fs-5'>Answer</label>
-        <textarea id='answer' pattern='[a-z]*' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} style={{ wordWrap: 'break-word', height: '40px',width:'350px'}}></textarea>
+        <input id='answer' pattern='[a-z]*' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
         </div>
         <div className='mb-3'>
         <label htmlFor='image' className='form-label fw-bold fs-5'>User image</label>
-        <input type="text" id="image" className="form-control" {...register('image',{required:true})} onChange={(e)=>setImage(e.target.value)}/>
+        <input type="text" id="image" className="form-control" {...register('image',{required:true})} onChange={(e)=>setImage(e.target.value)} />
         </div>
         <div className='text-center'>
         <Button className='btn btn-danger me-2' onClick={handleClose}><GiCancel />Cancel</Button>

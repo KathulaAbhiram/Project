@@ -68,7 +68,7 @@
 
 /* Animation Shaking on error input */
 
-textarea:invalid{
+input:invalid{
   border: 2px solid red;
   animation: shake 0.2s 2;
 }
