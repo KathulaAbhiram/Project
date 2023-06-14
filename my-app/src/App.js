@@ -23,9 +23,34 @@ function App() {
   const [image, setImage] = useState('');
   const [qslist,setQslist]=useState([
     {
+      question:'Itachi',
+      answer:'Sharingan',
+      image:'https://th.bing.com/th/id/OIP.X9OHDlanC9uW4n5F4asv9gHaJl?w=139&h=180&c=7&r=0&o=5&pid=1.7',
+    },
+    {
       question:'Minato',
       answer:'Flying Raijin',
       image:'https://th.bing.com/th/id/OIP.3D4-1drKJXM3xEhJxzP_qgHaHa?w=174&h=180&c=7&r=0&o=5&pid=1.7',
+    },
+    {
+      question:'Kakashi',
+      answer:'Chidori',
+      image:'https://th.bing.com/th/id/OIP.hmIC6zo6YjB9nJxNK5r4UwHaJ4?w=139&h=185&c=7&r=0&o=5&pid=1.72222222',
+    },
+    {
+      question:'Naruto',
+      answer:'Rasengan',
+      image:'https://wallpapercave.com/wp/fyY4nRv.jpg',
+    },
+    {
+      question:'Obito',
+      answer:'Kamui',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWFK2KO4_J0ch3Oqqu5FPJtn9BWX-RA7uVg&usqp=CAU',
+    },
+    {
+      question:'Pain',
+      answer:'Shinra Tensei',
+      image:'https://th.bing.com/th/id/OIP.WJMQlrJbQ9q75Ww_NV-O3QHaFW?w=247&h=180&c=7&r=0&o=5&pid=1.7',
     },
   ]);
   const [show, setShow] = useState(false);
@@ -94,12 +119,7 @@ function App() {
     <div className='App'>
     <RouterProvider router={router}></RouterProvider>
 
-      {/* Button */}
-      <div className="btn-container">
-        <button onClick={handleShow} className="btn btn-primary">
-          <IoMdAddCircle style={{ marginRight: "5px" }} />Add Card
-        </button>
-      </div>
+      
 
       {/*  Modal */}
       <Modal show={show} onHide={handleClose}>
@@ -144,6 +164,12 @@ function App() {
         </div>
         )}
         </div>
+        {/* Button */}
+      <div className="btn-container">
+        <button onClick={handleShow} className="btn btn-primary">
+          <IoMdAddCircle style={{ marginRight: "5px" }} />Add Card
+        </button>
+      </div>
     </div>
   );
 }
