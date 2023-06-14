@@ -15,6 +15,7 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
+
 //To print details in forntend =we use get
 app.get('/get', (req, res) => {
     let sqlSelect = 'SELECT *FROM Data.abc_def';
