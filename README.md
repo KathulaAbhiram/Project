@@ -1,6 +1,6 @@
 # FLASHCARD SCREEN
 
-To create a **Flashcard Screen** which dsiplays a list of flash cards with **Add Card Button** in the bottom.
+To create a **Flashcard Screen** which displays a list of flash cards with **Add Card Button** in the bottom.
 
 After clicking Add Card buttton and entering the details new card should be displayed on the screen.
 
