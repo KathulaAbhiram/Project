@@ -12,7 +12,6 @@
   background-position: center;
 }
 
-
 .btn-container {
   display: flex;
   justify-content: flex-end;
@@ -66,11 +65,7 @@
   margin-bottom: 10px;
 }
 
-
-
-
 /*Modal Card*/
-
 
 .modal-header {
   background-color: #ffcc00;
@@ -95,3 +90,4 @@
 .input-lg {
   height: 50px;
 }
+

@@ -17,7 +17,6 @@ import {GiCancel} from 'react-icons/gi';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 function App() {
-
   const [question,setQuestion]=useState('');
   const [answer,setAnswer]=useState('');
   const [image, setImage] = useState('');
@@ -118,9 +117,6 @@ function App() {
   return (
     <div className='App'>
     <RouterProvider router={router}></RouterProvider>
-
-      
-
       {/*  Modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className='modal-header'>
@@ -128,25 +124,22 @@ function App() {
         </Modal.Header>
         <Modal.Body className='modal-body'>
         <div className='row modal-content'>
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
-        
+        <form onSubmit={handleSubmit(handleFormSubmit)}>        
         <div className='mb-3 form-group'>
-        <label htmlFor='question' className='form-control fw-bold fs-5'>Question</label>
+        <label htmlFor='question' className='form-control fw-bold fs-5'>Character</label>
         <input id='question' {...register('question', { required: true })} onChange={(e) => setQuestion(e.target.value)} />
-
-        
         </div>
         <div className='mb-3 form-group'>
-        <label htmlFor='answer' className='form-control fw-bold fs-5'>Answer</label>
+        <label htmlFor='answer' className='form-control fw-bold fs-5'>Power</label>
         <input id='answer' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
         </div>
         <div className='mb-3 form-group'>
-        <label htmlFor='image' className='form-label fw-bold fs-5'>User image</label>
+        <label htmlFor='image' className='form-label fw-bold fs-5'>Image</label>
         <input type="text" id="image" className="form-control" {...register('image',{required:true})} onChange={(e)=>setImage(e.target.value)} />
         </div>
         <div className='text-center'>
         <Button className='btn btn-danger me-2' onClick={handleClose}><GiCancel />Cancel</Button>
-        <Button type="submit"><BsCloudUploadFill />Add</Button>
+        <Button type="submit"><BsCloudUploadFill />Add Character</Button>
         </div>      
         </form>
 
