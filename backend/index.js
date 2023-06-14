@@ -16,31 +16,32 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 //To print details in forntend =we use get
-app.get('/api/get', (req, res) => {
-    const sqlSelect = 'SELECT *FROM abc_def';
+app.get('/get', (req, res) => {
+    let sqlSelect = 'SELECT *FROM Data.abc_def';
     db.query(sqlSelect, (err, result) => {
       if (err) {
         console.log(err);
         res.status(500).send('Internal Server Error');
       } else {
-        res.send(result);
+        res.send(res);
       }
     });
   });
 
-app.post("/api/insert",(req,res)=>{
+app.post("/insert",(req,res)=>{
     const question=req.body.question;
     const answer=req.body.answer;
     const image=req.body.image;
 
-    const sqlInsert='INSERT INTO abc_def (question,answer,image) VALUES (?,?,?)';
+    const sqlInsert='INSERT INTO Data.abc_def (question,answer,image) VALUES (?,?,?)';
     db.query(sqlInsert, [question, answer, image], (err, result) => {
-        if (err) {
-          console.log(err);
-          res.status(500).send('Internal Server Error');
-        } else {
-          res.status(200).send('Inserted successfully');
-        }
+      if(result){    
+        console.log(result)
+        response.send(result)
+      }
+      else{
+        console.log(err)
+      }
     });
 });
     

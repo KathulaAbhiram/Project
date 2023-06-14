@@ -34,14 +34,15 @@ function App() {
   //To print data of movie name and reviews in console
   //Fetch data
   useEffect(()=>{
-    Axios.get('http://localhost:3001/api/get')
-    .then((res)=>setQslist(res.data))
+    Axios.get('http://localhost:3001/get')
+    .then((res)=>setQslist([...qslist,res.data]))
     .catch((err)=>console.log(err))
   },[]);
 
   const submitReview=()=>{
-    Axios.post('http://localhost:3001/api/insert',{question:question,answer:answer,image:image})
-    .then(()=>setQslist([...qslist,{question:question,answer:answer,image:image}]))
+    setQslist([...qslist,{question:question,answer:answer,image:image}])
+    Axios.post('http://localhost:3001/insert',{question:question,answer:answer,image:image})
+    .then((res)=> console.log(res))
     .catch((err)=>console.log(err));
   };
 
@@ -108,17 +109,18 @@ function App() {
         <Modal.Body className='modal-body'>
         <div className='row modal-content'>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <div className='mb-3'>
+        
+        <div className='mb-3 form-group'>
         <label htmlFor='question' className='form-control fw-bold fs-5'>Question</label>
         <input id='question' {...register('question', { required: true })} onChange={(e) => setQuestion(e.target.value)} />
 
         
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 form-group'>
         <label htmlFor='answer' className='form-control fw-bold fs-5'>Answer</label>
         <input id='answer' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 form-group'>
         <label htmlFor='image' className='form-label fw-bold fs-5'>User image</label>
         <input type="text" id="image" className="form-control" {...register('image',{required:true})} onChange={(e)=>setImage(e.target.value)} />
         </div>
@@ -127,6 +129,7 @@ function App() {
         <Button type="submit"><BsCloudUploadFill />Add</Button>
         </div>      
         </form>
+
         <ProgressBar now={calculateProgress()} />
         </div>
         </Modal.Body>
