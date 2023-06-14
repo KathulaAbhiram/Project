@@ -23,9 +23,9 @@ function App() {
   const [image, setImage] = useState('');
   const [qslist,setQslist]=useState([
     {
-      question:'abhi',
-      answer:'ram',
-      image:'https://th.bing.com/th/id/OIP.Ft_YeIiY848sQ-5Y92TrrQHaEK?w=294&h=180&c=7&r=0&o=5&pid=1.7',
+      question:'Minato',
+      answer:'Flying Raijin',
+      image:'https://th.bing.com/th/id/OIP.3D4-1drKJXM3xEhJxzP_qgHaHa?w=174&h=180&c=7&r=0&o=5&pid=1.7',
     },
   ]);
   const [show, setShow] = useState(false);
