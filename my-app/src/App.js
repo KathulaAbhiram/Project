@@ -22,36 +22,47 @@ function App() {
   const [image, setImage] = useState('');
   const [qslist,setQslist]=useState([
     {
-      question:'Itachi',
-      answer:'Sharingan',
-      image:'https://th.bing.com/th/id/OIP.X9OHDlanC9uW4n5F4asv9gHaJl?w=139&h=180&c=7&r=0&o=5&pid=1.7',
+      question:'Waterpipe Leakage',
+      answer:'Road no:10,Near Hanuman Temple',
+      image:'https://cabalinspections.com/wp-content/uploads/2019/09/plumbing-leak-old-pipes-1080x675.jpg.webp',
+      clicked:false,
     },
     {
-      question:'Minato',
-      answer:'Flying Raijin',
-      image:'https://th.bing.com/th/id/OIP.3D4-1drKJXM3xEhJxzP_qgHaHa?w=174&h=180&c=7&r=0&o=5&pid=1.7',
+      question:'Drainage Overflow',
+      answer:'Road no:5,Lane no-1',
+      image:'https://media.istockphoto.com/id/1185270091/video/water-pipe-breakthrough-water-splashes-out-of-the-pipe-strong-pressure-of-water.jpg?s=640x640&k=20&c=MtfBL12JSApOv_lLY0ug3TNkeD73q8yp7fQpSeNom2w=',
+      clicked:false,
     },
     {
-      question:'Kakashi',
-      answer:'Chidori',
-      image:'https://th.bing.com/th/id/OIP.hmIC6zo6YjB9nJxNK5r4UwHaJ4?w=139&h=185&c=7&r=0&o=5&pid=1.72222222',
+      question:'Food Wastage',
+      answer:'Road no:5,Near Lakshmi Banquet Hall',
+      image:'https://umaine.edu/sustainability/wp-content/uploads/sites/162/2021/04/Treasure_trove_of_wasted_food_sm2.jpg',
+      clicked:false,
     },
     {
-      question:'Naruto',
-      answer:'Rasengan',
-      image:'https://wallpapercave.com/wp/fyY4nRv.jpg',
+      question:'Waste',
+      answer:'Road no:7',
+      image:'https://scontent.fhyd10-1.fna.fbcdn.net/v/t1.6435-9/121029707_1546035565581722_562656835059319273_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9b3078&_nc_ohc=9WyKPTlEZPMAX87f-gw&_nc_ht=scontent.fhyd10-1.fna&oh=00_AfBdM-W5RFViLgA3jJFHGNLa-1jGfhDnvYy9Do01bQ29nw&oe=65B27029',
+      clicked:false,
     },
+    //{
+      //question:'Water Blockage',
+      //answer:'Road no:1,Lane no-6',
+      //image:'https://www.researchgate.net/profile/David-Ogbonna/publication/329895885/figure/fig1/AS:718508606361601@1548317209535/Blockage-of-drainage-channel-with-plastics-and-other-materials-to-stop-free-flow-of-water.jpg',
+      //clicked:false,
+    //},
     {
-      question:'Obito',
-      answer:'Kamui',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWFK2KO4_J0ch3Oqqu5FPJtn9BWX-RA7uVg&usqp=CAU',
-    },
-    {
-      question:'Pain',
-      answer:'Shinra Tensei',
-      image:'https://th.bing.com/th/id/OIP.WJMQlrJbQ9q75Ww_NV-O3QHaFW?w=247&h=180&c=7&r=0&o=5&pid=1.7',
+      question:'Free Food',
+      answer:'Road no:15,Raja Function Hall',
+      image:'https://samaroh.in/wp-content/uploads/2017/12/B5I1.jpg',
+      clicked:false,
     },
   ]);
+  const handleButtonClick = (index) => {
+    const updatedList = [...qslist];
+    updatedList[index].clicked = !updatedList[index].clicked; // Toggle clicked property
+    setQslist(updatedList);
+  };
   const [show, setShow] = useState(false);
   const {register,handleSubmit,formState:{errors}}=useForm();
 
@@ -120,17 +131,17 @@ function App() {
       {/*  Modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className='modal-header'>
-          <Modal.Title className='modal-title'>Creating a new card</Modal.Title>
+          <Modal.Title className='modal-title'>Add problem status</Modal.Title>
         </Modal.Header>
         <Modal.Body className='modal-body'>
         <div className='row modal-content'>
         <form onSubmit={handleSubmit(handleFormSubmit)}>        
         <div className='mb-3 form-group'>
-        <label htmlFor='question' className='form-control fw-bold fs-5'>Character</label>
+        <label htmlFor='question' className='form-control fw-bold fs-5'>Problem</label>
         <input id='question' {...register('question', { required: true })} onChange={(e) => setQuestion(e.target.value)} />
         </div>
         <div className='mb-3 form-group'>
-        <label htmlFor='answer' className='form-control fw-bold fs-5'>Power</label>
+        <label htmlFor='answer' className='form-control fw-bold fs-5'>Location</label>
         <input id='answer' {...register('answer',{required:true})} onChange={(e)=>setAnswer(e.target.value)} />
         </div>
         <div className='mb-3 form-group'>
@@ -139,7 +150,7 @@ function App() {
         </div>
         <div className='text-center'>
         <Button className='btn btn-danger me-2' onClick={handleClose}><GiCancel />Cancel</Button>
-        <Button type="submit"><BsCloudUploadFill />Add Character</Button>
+        <Button type="submit"><BsCloudUploadFill />Add Problem</Button>
         </div>      
         </form>
 
@@ -148,11 +159,12 @@ function App() {
         </Modal.Body>
       </Modal>
         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4'>
-        {qslist.map((val)=><div className='col text-center mx-auto' key={val.question}>
+        {qslist.map((val,index)=><div className='col text-center mx-auto' key={val.question}>
         <div className="card">          
           <h1 className="h1">{val.question}</h1>
           <h1 className="h1">{val.answer}</h1>
           <img src={val.image} alt='' className='img'/>
+          <button style={{backgroundColor: val.clicked ? 'green' : 'transparent',}}onClick={() => handleButtonClick(index)}>{val.clicked ? 'Done' : 'Click Me'}</button>
         </div>
         </div>
         )}
@@ -160,7 +172,7 @@ function App() {
         {/* Button */}
       <div className="btn-container">
         <button onClick={handleShow} className="btn btn-primary">
-          <IoMdAddCircle style={{ marginRight: "5px" }} />Add Card
+          <IoMdAddCircle style={{ marginRight: "5px" }} />Add Problem
         </button>
       </div>
     </div>
